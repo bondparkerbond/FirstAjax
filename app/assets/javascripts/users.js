@@ -40,7 +40,6 @@ $(document).ready( function() {
       }
     });
 
-
   });
 
 
@@ -57,7 +56,7 @@ $(document).ready( function() {
               $('.edit').data('user-id', data.user.id);
             }
           }
-         )
+         );
   });
 
   $('.edit').on('click', function() {
@@ -86,7 +85,6 @@ $(document).ready( function() {
               that.closest('.person').remove();
             }
           });
-
   });
 
   function compare(a,b) {
@@ -104,7 +102,6 @@ $(document).ready( function() {
       sortarr.push({first_name: people[i].dataset.firstName, id: people[i].dataset.userId});
     }
       
-    
     var newarr = sortarr.sort(compare);
     console.log(newarr);
     $('#users').empty()
@@ -112,13 +109,7 @@ $(document).ready( function() {
       var user = newarr[index];
       $('#users').append("<li class='person' data-user-id='" + user.id + "'>" + user.first_name + "<button class='delete'>Delete</button><button id='show'>Show</button></li>");
     }
-      $('#add_sort').addClass('hide')
-    //        {
-    //          type: 'GET',
-    //          success: function(data) {
-    //            $('body').append(data);
-    //          }
-    //        });
+      $('#add_sort').addClass('hide');
   });
 
   $('.add').on('click', function(){
