@@ -9,8 +9,9 @@ $(document).ready( function() {
 			success: function(data) {
 				for(index in data.users) {
 					var user = data.users[index];
-					$('#users').append("<li class='person' data-user-id='" + user.id + "' data-first-name='" + user.first_name + "'>" + user.first_name + ' ' + user.last_name + ' ' + user.phone_number + "<button class='delete'>Delete</button><button id='show'>Show</button></li>");
-          $('#user_details').append("<span class='card-title'>" + user.first_name + ' ' + user.last_name + "</span><p>" + user.phone_number + "</p>");
+					$('#users').append("<li class='person' data-user-id='" + user.id + "' data-first-name='" + user.first_name + "'>" + user.first_name + ' ' + user.last_name + ' ' + user.phone_number + "<button class='delete'>Delete</button><button class='show'>Show</button></li>");
+          $('#placeholder').append("<div class='row person' data-user-id='" + user.id + "'><div class='col s4 m4'><div class='card blue-grey darken-1'><div id='user_details' class='card-content white-text'><span class='card-title'>" 
+            + user.first_name + ' ' + user.last_name + "</span><p>" + user.phone_number + "</p></div><div class='card-action'><a href='#' class='delete'>Delete</a><a href='#' class='show'>Show</a></div></div></div></div>");
         }
       },
       error: function(data) {
@@ -29,7 +30,7 @@ $(document).ready( function() {
     });
   }
 
-  $(document).on('click', '#show', function() {
+  $(document).on('click', '.show', function() {
     var id = $(this).closest('.person').data('user-id');
     $.ajax(baseUrl + id, {
       type: 'GET',
@@ -102,6 +103,10 @@ $(document).ready( function() {
     for(index in newarr) {
       var user = newarr[index];
       $('#users').append("<li class='person' data-user-id='" + user.id + "'>" + user.first_name + "<button class='delete'>Delete</button><button id='show'>Show</button></li>");
+      // compare 105 with 127 to see what doesn't need to be below
+      $('#placeholder').append("<div class='row person' data-user-id='" + user.id + "'><div class='col s4 m4'><div class='card blue-grey darken-1'><div id='user_details' class='card-content white-text'><span class='card-title'>" 
+            + user.first_name + ' ' + user.last_name + "</span><p>" + user.phone_number + "</p></div><div class='card-action'><a href='#' class='delete'>Delete</a><a href='#' class='show'>Show</a></div></div></div></div>");
+      //
     }
     $('#add_sort').addClass('hide')
   });
@@ -119,7 +124,9 @@ $(document).ready( function() {
 			data: user,
 			success: function(data) {
 				var user = data.user;
-				$('#users').append("<li class='person' data-user-id='" + user.id + "'>" + user.first_name + "<button class='delete'>Delete</button></li>");
+				$('#users').append("<li class='person' data-user-id='" + user.id + "'>" + user.first_name + ' ' + user.last_name + ' ' + user.phone_number + "<button class='delete'>Delete</button></li>");
+        $('#placeholder').append("<div class='row person' data-user-id='" + user.id + "'><div class='col s4 m4'><div class='card blue-grey darken-1'><div id='user_details' class='card-content white-text'><span class='card-title'>" 
+            + user.first_name + ' ' + user.last_name + "</span><p>" + user.phone_number + "</p></div><div class='card-action'><a href='#' class='delete'>Delete</a><a href='#' class='show'>Show</a></div></div></div></div>");
 			}
 		});
 	});
