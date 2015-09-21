@@ -9,7 +9,7 @@ $(document).ready( function() {
 			success: function(data) {
 				for(index in data.users) {
 					var user = data.users[index];
-					$('#users').append("<li class='person' data-user-id='" + user.id + "' data-first-name='" + user.first_name + "'>" + user.first_name + "<button class='delete'>Delete</button><button id='show'>Show</button></li>");
+					$('#users').append("<li class='person' data-user-id='" + user.id + "' data-first-name='" + user.first_name + "'>" + user.first_name + ' ' + user.last_name + ' ' + user.phone_number + "<button class='delete'>Delete</button><button id='show'>Show</button></li>");
 				}
 			},
 			error: function(data) {
